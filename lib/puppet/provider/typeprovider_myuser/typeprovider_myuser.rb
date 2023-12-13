@@ -14,17 +14,18 @@ class Puppet::Provider::TypeproviderMyuser::TypeproviderMyuser < Puppet::Resourc
   end
 
   def create(_context, _name, should)
-    # context.notice("Creating '#{name}' with #{should.inspect}")
-    `useradd --shell #{should[:shell]} #{should[:name]}`
+    if should[:system]
+      `useradd --system --shell #{should[:shell]} #{should[:name]}`
+    else
+      `useradd --shell #{should[:shell]} #{should[:name]}`
+    end
   end
 
   def update(_context, _name, should)
-    # context.notice("Updating '#{name}' with #{should.inspect}")
     `usermod --shell #{should[:shell]} #{should[:name]}`
   end
 
   def delete(_context, name)
-    # context.notice("deleting '#{name}'")
     `userdel #{name}`
   end
 end

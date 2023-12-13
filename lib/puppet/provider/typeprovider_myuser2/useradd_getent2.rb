@@ -34,7 +34,11 @@ Puppet::Type.type(:typeprovider_myuser2).provide(:adduser_getent2) do
   end
 
   def create
-    useradd('--shell', resource[:shell], resource[:name])
+    if resource[:system]
+      useradd('--system', '--shell', resource[:shell], resource[:name])
+    else
+      useradd('--shell', resource[:shell], resource[:name])
+    end
     @property_hash[:ensure] = :present
   end
 

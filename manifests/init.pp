@@ -10,7 +10,7 @@ class typeprovider {
   #
   # typeprovider::myuser { 'testuser':
   #   ensure => 'present',
-  #   #ensure => 'absent',
+  #   # ensure => 'absent',
   #   shell  => '/bin/bash',
   # }
 
@@ -18,8 +18,9 @@ class typeprovider {
   # custom resource using Simple API
   #
   # typeprovider_myuser{'testuser':
-  #   ensure => 'present',
-  #   #ensure => 'absent',
+  #   # ensure => 'present',
+  #   ensure => 'absent',
+  #   # system => true,
   #   shell  => '/bin/bash',
   # }
   # 
@@ -31,9 +32,10 @@ class typeprovider {
   ############
   # custom resource traditional way
   #
-  # typeprovider::myuser2 { 'testuser':
-  #   ensure => 'present',
-  #   #ensure => 'absent',
+  # typeprovider_myuser2 { 'testuser':
+  #   # ensure => 'present',
+  #   # ensure => 'absent',
+  #   system => true,
   #   shell  => '/bin/bash',
   # }
   # 

@@ -12,6 +12,12 @@ Puppet::Type.newtype(:typeprovider_myuser2) do
     desc 'name of the user'
   end
 
+  newparam(:system, boolean: true) do
+    desc 'do we create system users'
+    newvalues(:true, :false)
+    defaultto :false
+  end
+
   newproperty(:shell) do
     desc 'shell of user'
     defaultto '/bin/bash'

@@ -9,7 +9,11 @@ Puppet::Type.type(:typeprovider_myuser2).provide(:useradd) do
   commands getent: 'getent'
 
   def create
-    useradd('--shell', resource[:shell], resource[:name])
+    if resource[:system]
+      useradd('--system', '--shell', resource[:shell], resource[:name])
+    else
+      useradd('--shell', resource[:shell], resource[:name])
+    end
   end
 
   def destroy

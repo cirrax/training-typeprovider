@@ -22,6 +22,13 @@ EOS
     shell: {
       type: "Enum['/bin/sh', '/bin/bash', '/usr/sbin/nologin', '/bin/sync']",
       desc: 'The shell for the user',
+      default: '/bin/bash',
+    },
+    system: {
+      type: 'Boolean',
+      desc: 'if systemuser or not',
+      behaviour: :parameter,
+      default: false,
     },
   },
 )
